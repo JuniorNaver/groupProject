@@ -44,7 +44,7 @@ cd group-project
     └── mori_time.svg    ← 아이콘 등
 ```
 
-## 3. 브랜치 설명
+## 3. 브랜치 설명(전 프로젝트 내용이라 수정 필요)
 ```
 /CalendarProject
 ├── 브랜치: feature/auth      → login.html, signup.html, auth.js
@@ -70,7 +70,7 @@ git checkout junhee         #(브랜치가 없다면 해당 명령어로 생성)
 git merge origin/main  # 또는 git rebase origin/main
 
 # 3. 병합 후 커밋 & 푸시
-git push origin feature/브랜치명
+git push origin junhee
 ```
 - 브랜치명은 기능별로 아래처럼 작성합니다:
 ``` bash
@@ -93,9 +93,9 @@ feature/utils      # 공통 함수 및 유틸리티
 # 핵심 가이드[작업 마친 후]
 
 ## 3. 작업 마친 후 커밋과 푸시하기(절대 main 브랜치 직접 push X)
-### a) .html .css .js 파일 수정 -> 기능별 브랜치 이용(main 사용 X)
+### a) .html .css .js 파일 수정 -> 자기 브랜치 이용(main 사용 X)
 ```bash
-git checkout feature/기능명   # 수정하고자 하는 기능별 브랜치로 이동
+git checkout junhee   # 수정하고자 하는 기능별 브랜치로 이동
 git add .                     # 모든 파일 스테이지에 올리기
 git commit -m "커밋문구"       # 문구(수정사항) 작성 후 커밋
 git push                      # 깃허브 feature/기능명 브랜치에 푸시
