@@ -1,5 +1,5 @@
-import Button from "../component/Button";
-import Header from "../component/Header";
+import Button from "../components/Button";
+import Header from "../components/Header";
 
 const Daily=()=>{
     return(
@@ -12,3 +12,4 @@ const Daily=()=>{
         </div>
     );
 };
+export default Daily;
