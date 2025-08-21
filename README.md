@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# ShareProject 협업 가이드
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+안녕하세요!  
+이 프로젝트는 로그인, 회원가입, 캘린더, 일정 관리 기능을 HTML/CSS/JS로 구현하는 웹 프로젝트입니다.  
+효율적인 협업을 위해 아래 가이드를 꼭 따라 주세요!
 
-## Available Scripts
+---
+# 초기 가이드
+## 1. (초기 1회만 진행)저장소 클론하기
 
-In the project directory, you can run:
+### i) group-project 폴더(소스코드 최상위 폴더)를 생성할 상위 디렉터리 지정하기
+    ex) C:\reactdeveloper\reactCoding
+### ii) 우클릭 후 open git bash here 선택
+    -> MINGW64:/c/reactdeveloper/reactCoding 상단 배너 확인
+### iii) 하위 명령어 순서대로 수행
+```bash
+git clone https://github.com/JuniorNaver/CalendarProject.git
+cd CalendarProject
+```
 
-### `npm start`
+## 2. 디렉터리 구조 설명
+```
+/CalendarProject
+├── index.html           ← 메인 진입 페이지 (소개/버튼 등)
+├── login.html           ← 로그인 화면
+├── signup.html          ← 회원가입 화면
+├── calendar.html        ← 월별 일정 확인 및 등록
+├── schedule.html        ← 일정 등록, 확인 및 수정
+│
+├── js/                  ← 기능별 JS 모듈 폴더
+│   ├── lonin.js         ← 로그인 로직
+│   ├── signup.js        ← 회원가입 로직
+│   ├── calendar.js      ← 달력 렌더링 및 일정 불러오기
+│   ├── schedule.js      ← 일정 등록 빛 수정, 저장하기
+│   └── common.js        ← 공통 함수 등
+│
+├── css/                 ← 스타일 파일 폴더
+│   ├── common.css       ← 공통 스타일 (header, center, btn, 폰트 등)
+│   ├── calendar.css     ← 달력 전용 스타일
+│   ├── schedule.js      ← 일정 등록 페이지 스타일
+│   └── signup.css       ← 회원가입/로그인 스타일
+│
+└── image/               ← 아이콘이나 백그라운드 이미지 모음 폴더
+    └── mori_time.svg    ← 아이콘 등
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 3. 브랜치 설명
+```
+/CalendarProject
+├── 브랜치: feature/auth      → login.html, signup.html, auth.js
+├── 브랜치: feature/calendar  → calendar.html, calendar.js
+├── 브랜치: feature/schedule  → 일정 추가 로직, localStorage
+├── 브랜치: feature/ui        → style.css, calendar.css
+├── 브랜치: feature/utils     → utils.js (날짜 계산 등)
+└── 메인 브랜치: main         → 모든 기능이 병합되어 배포되는 기준
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+# 핵심 가이드[작업 시작 전]
 
-### `npm test`
+## 1. 브랜치 접속 및 작업하기(가장 중요‼)
+- 항상 최신 main 브랜치에서 해당 브랜치로 접속하여 작업하세요.
+```bash
+# 1. main 최신화
+git checkout main
+git pull origin main
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 2. 내 브랜치로 전환 + 최신 main 병합
+git checkout feature/브랜치명         #(브랜치가 없다면 해당 명령어로 생성): git checkout -b feature/브랜치명
+git merge origin/main  # 또는 git rebase origin/main
 
-### `npm run build`
+# 3. 병합 후 커밋 & 푸시
+git push origin feature/브랜치명
+```
+- 브랜치명은 기능별로 아래처럼 작성합니다:
+``` bash
+feature/auth       # 로그인/회원가입 기능
+feature/calendar   # 달력 렌더링 및 월/일 이동 기능
+feature/schedule   # 일정 등록/조회/삭제 기능
+feature/ui         # 스타일 및 UI 개선
+feature/utils      # 공통 함수 및 유틸리티
+```
+## 2. 작업 시작 전 주의사항
+- 항상 main 브랜치를 최신으로 유지하세요.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 직접 main 브랜치에 커밋하지 말고 PR을 통해 병합하세요.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 커밋 메시지는 [기능명] 작업 내용 형식을 권장합니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 충돌 발생 시 적극적으로 해결하고 팀원과 소통하세요.
 
-### `npm run eject`
+---
+# 핵심 가이드[작업 마친 후]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 3. 작업 마친 후 커밋과 푸시하기(절대 main 브랜치 직접 push X)
+### a) .html .css .js 파일 수정 -> 기능별 브랜치 이용(main 사용 X)
+```bash
+git checkout feature/기능명   # 수정하고자 하는 기능별 브랜치로 이동
+git add .                     # 모든 파일 스테이지에 올리기
+git commit -m "커밋문구"       # 문구(수정사항) 작성 후 커밋
+git push                      # 깃허브 feature/기능명 브랜치에 푸시
+```
+### b) .md 파일, image 폴더 수정 -> main 브랜치 이용(드물게 사용)
+```bash
+git checkout main             # 코드일 경우는 절대 main 이용 X
+git add .
+git commit -m "커밋문구"
+git push
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 4. GitHub에서 Pull Request(PR) 생성(main으로 합치는 작업)
+### i) GitHub 저장소에서 Pull Requests 탭 클릭
+### ii) New Pull Request 클릭
+### iii) base branch: main
+### iv) compare branch: feature/기능명 선택
+### v) 제목과 설명을 명확하게 작성 후 PR 생성
+### vi) 팀원 리뷰(겹치는 코드 아니면 바로 병합해도 괜찮아요!) 후 승인되면 main 브랜치에 병합
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 5. 추가 팁
+- 프로젝트 내 파일 구조와 코딩 컨벤션을 지켜주세요.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 기능 완성 후 반드시 테스트를 진행하세요.
 
-## Learn More
+- 궁금한 점이나 문제가 있으면 바로 공유해주세요!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
