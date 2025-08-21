@@ -1,24 +1,58 @@
-.Button{
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
-    white-space: nowrap;
+.Button {
+  cursor: pointer;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
 }
 
-.Button default {
-    background-color: #ededed;
-    color: black;
+/* 기본 버튼 */
+.Button_default {
+  background-color: #EDEDED;
+  color: #333;
+}
+.Button_default:hover {
+  background-color: #DADADA;
 }
 
+/* 긍정 버튼 (등록/저장) */
 .Button_positive {
-    background-color:#228B22;
-    color: white;
+  background-color: #A8E6CF;
+  color: #333;
+}
+.Button_positive:hover {
+  background-color: #8ED4B4;
 }
 
+/* 부정 버튼 (삭제/취소) */
 .Button_negative {
-    background-color: #556B2F;
-    color:white;
+  background-color: #FF8B94;
+  color: #333;
+}
+.Button_negative:hover {
+  background-color: #FF6F7A;
+}
 
+/* 아이콘 전용 버튼 */
+.Button_icon {
+  background-color: #F0F0F0;
+  color: #333;
+  border-radius: 50%;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+.Button_icon:hover {
+  background-color: #E0E0E0;
+}
+
+/* 버튼 안 아이콘 크기 */
+.Button_icon svg {
+  width: 20px;
+  height: 20px;
 }
