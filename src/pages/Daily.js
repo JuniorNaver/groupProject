@@ -12,4 +12,5 @@ const Daily=()=>{
         </div>
     );
 };
+
 export default Daily;
