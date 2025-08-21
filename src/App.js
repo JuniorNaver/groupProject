@@ -1,23 +1,29 @@
 import './App.css';
+import Home from './pages/Home';
+import Daily from './pages/Daily';
+import Add from './pages/Daily';
+
+
+
+
+
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <DiaryDispatchContext.Provider>
+    <DiaryStateContext.Provider> 
+    <div className='App'>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/daily' element={<Daily />} />
+        <Route path='/add' element={<Add />} />
+      </Routes>
     </div>
+    </DiaryStateContext.Provider> 
+    </DiaryDispatchContext.Provider>
   );
 }
-
 export default App;
