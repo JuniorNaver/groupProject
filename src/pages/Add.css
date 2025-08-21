@@ -1,0 +1,57 @@
+.AddContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.AddContainer .typeSelection {
+  display: flex;
+  gap: 10px;
+}
+
+.AddContainer .typeButton {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.AddContainer .typeButton.selected.income {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+}
+
+.AddContainer .typeButton.selected.expense {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+}
+
+.AddContainer input[type="number"],
+.AddContainer input[type="text"],
+.AddContainer input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.AddContainer input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
