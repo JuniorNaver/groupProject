@@ -8,14 +8,14 @@
 # 초기 가이드
 ## 1. (초기 1회만 진행)저장소 클론하기
 
-### i) group-project 폴더(소스코드 최상위 폴더)를 생성할 상위 디렉터리 지정하기
+### i) groupProject 폴더(소스코드 최상위 폴더)를 생성할 상위 디렉터리 지정하기
     ex) C:\reactdeveloper\reactCoding
 ### ii) 우클릭 후 open git bash here 선택
     -> MINGW64:/c/reactdeveloper/reactCoding 상단 배너 확인
 ### iii) 하위 명령어 순서대로 수행
 ```bash
 git clone https://github.com/JuniorNaver/groupProject.git
-cd group-project
+cd groupProject
 ```
 
 ## 2. 디렉터리 구조 설명(전 프로젝트 내용이라 수정 필요)
