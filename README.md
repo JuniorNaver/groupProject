@@ -14,13 +14,13 @@
     -> MINGW64:/c/reactdeveloper/reactCoding 상단 배너 확인
 ### iii) 하위 명령어 순서대로 수행
 ```bash
-git clone https://github.com/JuniorNaver/CalendarProject.git
-cd CalendarProject
+git clone https://github.com/JuniorNaver/groupProject.git
+cd group-project
 ```
 
-## 2. 디렉터리 구조 설명
+## 2. 디렉터리 구조 설명(전 프로젝트 내용이라 수정 필요)
 ```
-/CalendarProject
+/group-project
 ├── index.html           ← 메인 진입 페이지 (소개/버튼 등)
 ├── login.html           ← 로그인 화면
 ├── signup.html          ← 회원가입 화면
@@ -66,7 +66,7 @@ git checkout main
 git pull origin main
 
 # 2. 내 브랜치로 전환 + 최신 main 병합
-git checkout feature/브랜치명         #(브랜치가 없다면 해당 명령어로 생성): git checkout -b feature/브랜치명
+git checkout junhee         #(브랜치가 없다면 해당 명령어로 생성): git checkout -b feature/브랜치명
 git merge origin/main  # 또는 git rebase origin/main
 
 # 3. 병합 후 커밋 & 푸시
