@@ -2,7 +2,7 @@ import './App.css';
 import Home from './pages/Home';
 import Daily from './pages/Daily';
 import Add from './pages/Add';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
@@ -16,3 +16,5 @@ function App() {
   );
 }
 export default App;
+
+
