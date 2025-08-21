@@ -3,14 +3,6 @@ import Home from './pages/Home';
 import Daily from './pages/Daily';
 import Add from './pages/Daily';
 
-
-
-
-
-
-
-
-
 function App() {
   return (
     <DiaryDispatchContext.Provider>
