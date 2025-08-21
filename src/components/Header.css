@@ -1,0 +1,51 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-surface); /* 숲속 느낌 메인색 */
+  color: var(--color-text);
+  padding: 0.8rem 1.2rem;
+  border-bottom: 2px solid var(--color-accent); /* 올리브톤 포인트 라인 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.header_left,
+.header_right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header_left {
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.header_title {
+  flex: 2;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--color-primary); /* 초록 메인색 */
+}
+
+.header_right {
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.Header button {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.Header button:hover {
+  background-color: var(--color-accent);
+}
