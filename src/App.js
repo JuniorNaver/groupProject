@@ -6,8 +6,6 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <DiaryDispatchContext.Provider>
-    <DiaryStateContext.Provider> 
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -15,8 +13,6 @@ function App() {
         <Route path='/add' element={<Add />} />
       </Routes>
     </div>
-    </DiaryStateContext.Provider> 
-    </DiaryDispatchContext.Provider>
   );
 }
 export default App;
