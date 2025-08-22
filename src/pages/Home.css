@@ -2,22 +2,23 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
-  width: 700px;
+  width: 800px;
   margin: 20px auto;
   text-align: center;
 }
 
 .day {
-  /*border: 1px solid #ccc;*/
-  height: 80px;
-  padding: 15px 0;
+  min-height: 100px;
+  padding: 5px;
   cursor: pointer;
   border-radius: 6px;
-  transition: background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .day:hover {
-  background: #f0f0f0;
+  background: #f6f5f5;
 }
 
 .empty {
@@ -27,10 +28,32 @@
 }
 
 .week-header {
-  font-weight: bold;
+  font-size: large;
+  font-weight:500;
   background: #f8f8f8;
 }
 
 .weekday {
   padding: 10px 0;
+}
+
+.date-num {
+  font-weight:400;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.transactions {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.income {
+  font-size: medium;
+  color: rgb(65, 65, 255);
+}
+
+.expense {
+  font-size: medium;
+  color: rgb(237, 90, 90);
 }

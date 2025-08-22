@@ -9,13 +9,23 @@ const Home = () => {
   const [year, setYear] = useState(2025);
   const [month, setMonth] = useState(new Date().getMonth()); // 0=1월
 
+  // 💰 날짜별 내역 데이터 (예시)
+  const transactions = {
+    "2025-8-1": { income: 40170, expense: 75240 },
+    "2025-8-4": { income: 224, expense: 10900 },
+    "2025-8-5": { income: 102, expense: 15700 },
+    "2025-8-6": { income: 500000, expense: 0 },
+    "2025-8-10": { income: 0, expense: 455600 },
+    "2025-8-18": { income: 200145, expense: 1296928 },
+  };
+
   // 이번 달의 마지막 날짜
   const getDaysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
   };
   const daysInMonth = getDaysInMonth(year, month);
 
-  // 이번 달 1일이 무슨 요일인지 (0=일요일, 6=토요일)
+  // 이번 달 1일의 요일 (0=일요일, 6=토요일)
   const firstDayOfWeek = new Date(year, month, 1).getDay();
 
   // 이전/다음 달 이동
@@ -42,27 +52,48 @@ const Home = () => {
     navigate(`/day/${year}-${month + 1}-${day}`);
   };
 
-  // 달력에 들어갈 "칸"들 만들기 (앞쪽 빈칸 + 날짜)
+  // 달력 칸 구성
   const calendarCells = [
+    // 앞쪽 빈칸
     ...Array.from({ length: firstDayOfWeek }).map((_, i) => (
       <div key={`empty-${i}`} className="day empty"></div>
     )),
-    ...Array.from({ length: daysInMonth }, (_, i) => (
-      <div
-        key={i + 1}
-        className="day"
-        onClick={() => handleClick(i + 1)}
-      >
-        {i + 1}
-      </div>
-    )),
+    // 날짜 + 내역
+    ...Array.from({ length: daysInMonth }, (_, i) => {
+      const day = i + 1;
+      const key = `${year}-${month + 1}-${day}`;
+      const tx = transactions[key];
+
+      return (
+        <div
+          key={day}
+          className="day"
+          onClick={() => handleClick(day)}
+        >
+          <div className="date-num">{day}</div>
+          {tx && (
+            <div className="transactions">
+              {tx.income > 0 && (
+                <div className="income">+{tx.income.toLocaleString()}</div>
+              )}
+              {tx.expense > 0 && (
+                <div className="expense">-{tx.expense.toLocaleString()}</div>
+              )}
+              {tx.transfer > 0 && (
+                <div className="transer">-{tx.transfer.toLocaleString()}</div>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    }),
   ];
 
   const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>가계부</h1>
+      <h1 style={{ textAlign: "center" }}>📅 가계부</h1>
 
       {/* 월 이동 */}
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
@@ -73,7 +104,7 @@ const Home = () => {
         <button onClick={handleNextMonth}>&gt;</button>
       </div>
 
-      {/* 요일 표시 */}
+      {/* 요일 */}
       <div className="calendar week-header">
         {weekDays.map((day) => (
           <div key={day} className="weekday">
@@ -82,7 +113,7 @@ const Home = () => {
         ))}
       </div>
 
-      {/* 날짜 칸 */}
+      {/* 날짜 */}
       <div className="calendar">{calendarCells}</div>
     </div>
   );
