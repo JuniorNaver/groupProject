@@ -40,8 +40,8 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home data={data} />} />
-        <Route path='/daily' element={<Daily data={data} />} />
-        <Route path='/add' element={<Add onCreate={onCreate} />} />
+        <Route path='/day/:date' element={<Daily data={data} />} />
+        <Route path='/add/:date' element={<Add onCreate={onCreate} />} />
       </Routes>
     </div>
   );
