@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaPen } from "react-icons/fa";
+// import pencil2 from '../image/pencil2.png';
+
 
 const Home = ({ data }) => {
   const navigate = useNavigate();
@@ -101,32 +103,31 @@ const Home = ({ data }) => {
   const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
-    <div> 
-      <br/><br/>
-              <h1 style={{ textAlign: "center", margin: 0 }}>📅 가계부</h1> 
-
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "690px"}}>
-        <Button
-          text={<FaChevronLeft size={15} />}
-          type={"icon"}
-          onClick={() => navigate(-1)}
-        />
-        <Button 
-          text={"등록"} 
-          type={"positive"} 
-          onClick={() => navigate("/add")} 
-        />
-      </div>
-      <br/><br/>
+    <div>
+      <Header
+        title={"📅 가계부"}
+        rightChild={
+          <Button
+            type={"icon"}
+            onClick={() => navigate("/add")}
+            text={<FaPen size={10} />}
+          />
+        }
+      />
+      <br /><br />
 
       {/* 월 이동 */}
-      <div style={{ textAlign: "center", marginBottom: "20px" }}>
-        <button onClick={handlePrevMonth}>&lt;</button>
-        <span style={{ margin: "0 20px", fontSize: "20px" }}>
-          {year}년 {month + 1}월
-        </span>
-        <button onClick={handleNextMonth}>&gt;</button>
+      <div style={{ position: "relative", textAlign: "center", marginBottom: "20px" }}>
+        <div style={{ display: "inline-flex", alignItems: "center" }}>
+          <button onClick={handlePrevMonth}>&lt;</button>
+          <span style={{ margin: "0 20px", fontSize: "20px" }}>
+            {year}년 {month + 1}월
+          </span>
+          <button onClick={handleNextMonth}>&gt;</button>
+        </div>
+
       </div>
+
 
       {/* 요일 */}
       <div className="calendar week-header">
