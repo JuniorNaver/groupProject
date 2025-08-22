@@ -1,0 +1,45 @@
+.Daily {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* .Daily ha{
+  font-size: 20px;
+  margin-bottom: 20px;
+} */
+
+.daily-list {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.daily-btn {
+  margin-top: 15px;
+  display: inline-block;
+  background-color: #4caf50; /* ✅ Add.css positive 버튼 컬러에 맞춤 */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.daily-btn:hover {
+  background-color: #45a049;
+}
+
+.back-btn {
+  margin-top: 10px;
+  display: block;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
