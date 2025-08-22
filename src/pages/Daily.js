@@ -86,9 +86,9 @@ const Daily = ({ data }) => {
         }
       />
 
-      <div>
+      <div style={{ display:"flex", flexWrap: "wrap"}}>
         {filteredData.map(item => (
-          <div key={item.id} style={{ border: "1px solid #ccc", margin: "5px", padding: "5px" }}>
+          <div key={item.id} >
             <CashList data={[item]} onUpdate={handleUpdate} /> {/* CashList는 하나짜리 배열로 */}
             {/* <Button type="positive" text="수정" onClick={() => handleUpdate(item.id)} /> */}
           </div>
