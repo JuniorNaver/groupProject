@@ -51,7 +51,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home data={data} />} />
         <Route path='/day/:date' element={<Daily data={data} />} />
-        <Route path='/add/:date' element={<Add onCreate={onCreate} />} />
+        <Route path='/add/:date?' element={<Add onCreate={onCreate} />} />
         <Route path='/update/:id' element={<Update data={data} onUpdate={onUpdate} /> } />
       </Routes>
     </div>
