@@ -2,6 +2,7 @@ import './App.css';
 import Home from './pages/Home';
 import Daily from './pages/Daily';
 import Add from './pages/Add';
+import Update from './pages/Update';
 import { Route, Routes } from 'react-router-dom';
 import { useReducer, useRef } from "react";
 
@@ -10,6 +11,10 @@ function reducer(state, action) {
   switch (action.type) {
     case "CREATE":
       return [action.data, ...state]; // 최신 항목이 위로 오도록
+    case "UPDATE":
+      return state.map(item =>
+        item.id === action.data.id ? {...item, ...action.data.updatedItem } : item
+      );
     default:
       return state;
   }
@@ -37,12 +42,17 @@ function App() {
     idRef.current += 1;
   };
 
+  const onUpdate = (id, updatedItem) => {
+    dispatch({ type: "UPDATE", data: { id, updatedItem }});
+  };
+
   return (
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home data={data} />} />
         <Route path='/day/:date' element={<Daily data={data} />} />
         <Route path='/add/:date' element={<Add onCreate={onCreate} />} />
+        <Route path='/update/:id' element={<Update data={data} onUpdate={onUpdate} /> } />
       </Routes>
     </div>
   );
