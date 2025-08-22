@@ -49,8 +49,11 @@ const Home = () => {
 
   // 날짜 클릭 → 상세 페이지 이동
   const handleClick = (day) => {
-    navigate(`/day/${year}-${month + 1}-${day}`);
+    const formattedMonth = String(month + 1).padStart(2, "0");
+    const formattedDay = String(day).padStart(2, "0");
+    navigate(`/day/${year}-${formattedMonth}-${formattedDay}`);
   };
+
 
   // 달력 칸 구성
   const calendarCells = [
@@ -61,7 +64,7 @@ const Home = () => {
     // 날짜 + 내역
     ...Array.from({ length: daysInMonth }, (_, i) => {
       const day = i + 1;
-      const key = `${year}-${month + 1}-${day}`;
+      const key = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
       const tx = transactions[key];
 
       return (
@@ -80,7 +83,7 @@ const Home = () => {
                 <div className="expense">-{tx.expense.toLocaleString()}</div>
               )}
               {tx.transfer > 0 && (
-                <div className="transer">-{tx.transfer.toLocaleString()}</div>
+                <div className="transfer">-{tx.transfer.toLocaleString()}</div>
               )}
             </div>
           )}
