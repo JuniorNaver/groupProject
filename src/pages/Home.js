@@ -12,11 +12,11 @@ const Home = () => {
   // 💰 날짜별 내역 데이터 (예시)
   const transactions = {
     "2025-8-1": { income: 40170, expense: 75240 },
-    "2025-8-4": { income: 224, expense: 10900 },
-    "2025-8-5": { income: 102, expense: 15700 },
-    "2025-8-6": { income: 500000, expense: 0 },
+    "2025-8-4": { income: 2240, expense: 10900 },
+    "2025-8-5": { income: 1020, expense: 15700 },
+    "2025-8-6": { income: 50000, expense: 0 },
     "2025-8-10": { income: 0, expense: 455600 },
-    "2025-8-18": { income: 200145, expense: 1296928 },
+    "2025-8-18": { income: 200140, expense: 126900 },
   };
 
   // 이번 달의 마지막 날짜
