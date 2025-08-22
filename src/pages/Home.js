@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import Header from "../components/Header";
+import Button from "../components/Button";
+import { FaChevronLeft } from "react-icons/fa";
 
 const Home = ({ data }) => {
   const navigate = useNavigate();
@@ -98,8 +101,23 @@ const Home = ({ data }) => {
   const weekDays = ["일", "월", "화", "수", "목", "금", "토"];
 
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>📅 가계부</h1>
+    <div> 
+      <br/><br/>
+              <h1 style={{ textAlign: "center", margin: 0 }}>📅 가계부</h1> 
+
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "690px"}}>
+        <Button
+          text={<FaChevronLeft size={15} />}
+          type={"icon"}
+          onClick={() => navigate(-1)}
+        />
+        <Button 
+          text={"등록"} 
+          type={"positive"} 
+          onClick={() => navigate("/add")} 
+        />
+      </div>
+      <br/><br/>
 
       {/* 월 이동 */}
       <div style={{ textAlign: "center", marginBottom: "20px" }}>

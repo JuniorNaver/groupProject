@@ -6,33 +6,27 @@ import Header from "../components/Header";
 import { FaChevronLeft } from "react-icons/fa";
 
 const Add = ({ onCreate }) => {
-  // URL 파라미터 date
+  // 파라미터로 받은 설정 date
   const { date } = useParams();
+  // 파라미터에 전달되지 않았을 때 기본값으로 사용할 today
+  const today = new Date().toISOString().substr(0, 10);
+
+  
   const navigate = useNavigate();
 
-  // URL이 "2025-8-5"처럼 0 없는 포맷이어도 yyyy-mm-dd로 변환
-  const normalizeDate = (dateStr) => {
-    if (!dateStr) return null;
-    const d = new Date(dateStr);
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  };
-
-  const today = new Date().toISOString().slice(0, 10);
   const [type, setType] = useState("expense");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [memo, setMemo] = useState("");
-  const [inputDate, setInputDate] = useState(normalizeDate(date) || today);
+  const [inputDate, setInputDate] = useState(date || today);
 
   const handleSave = () => {
     if (!amount || !category) {
       alert("금액과 카테고리를 입력해주세요.");
       return;
     }
-    onCreate(type, Number(amount), category, memo, inputDate); // timestamp 저장
+
+    onCreate(type, Number(amount), category, memo, inputDate);
     navigate("/");
   };
 
@@ -48,7 +42,11 @@ const Add = ({ onCreate }) => {
           />
         }
         rightChild={
-          <Button text={"저장"} type={"positive"} onClick={handleSave} />
+          <Button
+            text={"저장"}
+            type={"positive"}
+            onClick={handleSave}
+          />
         }
       />
 
@@ -96,7 +94,7 @@ const Add = ({ onCreate }) => {
         {/* 결제일 */}
         <input
           type="date"
-          value={inputDate} // date → inputDate로 수정
+          value={date}
           onChange={(e) => setInputDate(e.target.value)}
         />
       </div>
