@@ -1,32 +1,92 @@
 .CashList {
-
+  display: flex;
+  overflow-x: auto; /* 가로 스크롤 */
+  gap: 16px;
+  padding: 16px;
+  scroll-behavior: smooth;
 }
 
-.CashList .menu_wrapper {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: sapce-between;
+.CashList::-webkit-scrollbar {
+  height: 8px;
 }
 
-.CashList .left_col select{
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ececec;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right:20px;
-    cursor:pointer;
-    font-family: "Nanum Pen Script";
-    font-size: 18px;
+.CashList::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
 }
 
-.CashList .menu_wrapper .right_col {
-    flex-grow: 1;
+.CashItem {
+  min-width: 200px;          /* 카드 너비 */
+  max-width: 200px;
+  background-color: #fffdf6; /* 영수증 배경색 */
+  border: 1px dashed #ccc;   /* 영수증 테두리 */
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Nanum Pen Script', cursive;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  position: relative;
+  flex-shrink: 0;            /* 가로 스크롤 시 카드 고정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.CashList .menu_wrapper .right_col button{
-    width: 100%;
+.CashItem .header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.CashItem .date {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.CashItem .type {
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #fff;
+}
+
+.CashItem .type.income {
+  background-color: #4caf50;
+}
+
+.CashItem .type.expense {
+  background-color: #f44336;
+}
+
+.CashItem .body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.CashItem .amount {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.CashItem .category, .CashItem .memo {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.CashItem .update-btn {
+  margin-top: 10px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2196f3;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.CashItem .update-btn:hover {
+  background-color: #1769aa;
 }
