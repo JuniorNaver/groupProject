@@ -1,18 +1,24 @@
 import './Add.css';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import { FaChevronLeft } from "react-icons/fa";
 
 const Add = ({ onCreate }) => {
+  // 파라미터로 받은 설정 date
+  const { date } = useParams();
+  // 파라미터에 전달되지 않았을 때 기본값으로 사용할 today
+  const today = new Date().toISOString().substr(0, 10);
+
+  
   const navigate = useNavigate();
 
   const [type, setType] = useState("expense");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [memo, setMemo] = useState("");
-  const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
+  const [inputDate, setInputDate] = useState(date || today);
 
   const handleSave = () => {
     if (!amount || !category) {
@@ -20,7 +26,7 @@ const Add = ({ onCreate }) => {
       return;
     }
 
-    onCreate(type, Number(amount), category, memo, date);
+    onCreate(type, Number(amount), category, memo, inputDate);
     navigate("/");
   };
 
@@ -89,7 +95,7 @@ const Add = ({ onCreate }) => {
         <input
           type="date"
           value={date}
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e) => setInputDate(e.target.value)}
         />
       </div>
     </>
