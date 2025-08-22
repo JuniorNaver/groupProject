@@ -2,22 +2,29 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
-const Home = () => {
+const Home = ({ data }) => {
   const navigate = useNavigate();
 
   // 현재 연도와 월 상태
   const [year, setYear] = useState(2025);
   const [month, setMonth] = useState(new Date().getMonth()); // 0=1월
 
-  // 💰 날짜별 내역 데이터 (예시)
-  const transactions = {
-    "2025-8-1": { income: 40170, expense: 75240 },
-    "2025-8-4": { income: 2240, expense: 10900 },
-    "2025-8-5": { income: 1020, expense: 15700 },
-    "2025-8-6": { income: 50000, expense: 0 },
-    "2025-8-10": { income: 0, expense: 455600 },
-    "2025-8-18": { income: 200140, expense: 126900 },
-  };
+  // 📌 App에서 받은 data를 날짜별 합산
+  const transactions = data.reduce((acc, item) => {
+    const dateKey = new Date(item.date).toISOString().slice(0, 10); // YYYY-MM-DD
+
+    if (!acc[dateKey]) {
+      acc[dateKey] = { income: 0, expense: 0 };
+    }
+
+    if (item.type === "income") {
+      acc[dateKey].income += item.amount;
+    } else if (item.type === "expense") {
+      acc[dateKey].expense += item.amount;
+    }
+
+    return acc;
+  }, {});
 
   // 이번 달의 마지막 날짜
   const getDaysInMonth = (year, month) => {
@@ -54,7 +61,6 @@ const Home = () => {
     navigate(`/day/${year}-${formattedMonth}-${formattedDay}`);
   };
 
-
   // 달력 칸 구성
   const calendarCells = [
     // 앞쪽 빈칸
@@ -81,9 +87,6 @@ const Home = () => {
               )}
               {tx.expense > 0 && (
                 <div className="expense">-{tx.expense.toLocaleString()}</div>
-              )}
-              {tx.transfer > 0 && (
-                <div className="transfer">-{tx.transfer.toLocaleString()}</div>
               )}
             </div>
           )}
