@@ -48,7 +48,7 @@ const Daily = ({ data }) => {
       <Header
         title={`${date}`}
         leftChild={
-          <Button text={<FaChevronLeft size={15} />} type={"icon"} onClick={() => navigate(-1)} />
+          <Button text={<FaChevronLeft size={15} />} type={"icon"} onClick={() => navigate("/")} />
         }
       />
       <br/>
@@ -71,10 +71,6 @@ const Daily = ({ data }) => {
         <br/>
 
       <Button type="positive" text="소비내역 등록" onClick={handleAdd} />
-      <Button
-            type="default" 
-            text="← 캘린더로 돌아가기"
-            onClick={() => navigate(-1)}/>
     </div>
   );
 };
