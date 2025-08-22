@@ -27,7 +27,7 @@ const Add = ({ onCreate }) => {
     }
 
     onCreate(type, Number(amount), category, memo, inputDate);
-    navigate("/");
+    navigate(-1);
   };
 
   return (
@@ -94,7 +94,7 @@ const Add = ({ onCreate }) => {
         {/* 결제일 */}
         <input
           type="date"
-          value={date}
+          value={inputDate}
           onChange={(e) => setInputDate(e.target.value)}
         />
       </div>
