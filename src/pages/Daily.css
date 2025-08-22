@@ -43,3 +43,28 @@
   font-size: 14px;
   text-decoration: underline;
 }
+
+/* 총액 영역 */
+
+.total-item {
+  flex: 1;                       /* 균등 폭 */
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff8e1;     /* 카드 느낌 강조 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  min-width: 80px;
+}
+
+/* 색상 강조 */
+.total-item.income {
+  color: #4caf50;
+}
+
+.total-item.expense {
+  color: #f44336;
+}
+
+.total-item.balance {
+  color: #ff9800;
+}
