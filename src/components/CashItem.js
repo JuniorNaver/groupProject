@@ -1,21 +1,3 @@
-// import "./CashItem.css";
-
-// const CashItem = ({ type, amount, category, memo, date }) => {
-//   const formattedDate = new Date(date).toLocaleDateString();
-//   return (
-//     <div className="CashItem">
-//       <div>{formattedDate}</div>
-//       <div className={type === "income" ? "income" : "expense"}>
-//         {type === "income" ? "수입" : "지출"}</div>
-//       <div>{amount}원</div>
-//       <div>{category}</div>
-//       <div>{memo}</div>
-//     </div>
-//   );
-// };
-
-// export default CashItem;
-
 import "./CashItem.css";
 
 const CashItem = ({ id, type, amount, category, memo, date, onUpdate }) => {
