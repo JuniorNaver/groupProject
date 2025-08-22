@@ -30,7 +30,8 @@ function App() {
         amount,     // 금액
         category,   // 카테고리
         memo,       // 메모
-        date: new Date(date).getTime(), // 타임스탬프
+        date: new Date(date).getTime(), // timestamp로 통일 저장
+        // 화면 표시나 비교 시에는 new Date(item.date).toISOString().slice(0,10) 사용
       },
     });
     idRef.current += 1;
